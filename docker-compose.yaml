@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: postgres:12.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+
+  bot:
+    image: nikismol94/shop_tg_bot
+    depends_on:
+      - db
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./logs:/bot/logs
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:

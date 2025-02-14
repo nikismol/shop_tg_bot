@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+env/
+venv/
+ENV/
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Docker
+docker-compose.override.yml
+*.dockerfile
+
+# VSCode
+.vscode/
+
+# Environment Variables
+.env
+
+logs
+.DS_Store
