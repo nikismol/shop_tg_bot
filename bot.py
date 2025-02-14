@@ -6,7 +6,7 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from dotenv import load_dotenv
 
-from database.engine import create_db, session_maker, drop_db
+from database.engine import create_db, session_maker
 from handlers import admin_handler, user_hendler
 from middlewares.db import DataBaseSession
 
@@ -24,7 +24,6 @@ bot = Bot(
 
 
 async def on_startup():
-    await drop_db()
     await create_db()
 
 
