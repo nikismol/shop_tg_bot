@@ -60,7 +60,7 @@ async def products(session, level, category, page):
         media=product.image,
         caption=(
             f"<strong>{product.name}</strong>\n"
-            f"{product.description}\nСтоимость: {round(product.price, 2)}\n"
+            f"{product.description}\nСтоимость: {round(product.price, 2)} ₽\n"
             f"<strong>Товар {paginator.page} из {paginator.pages}</strong>"
         ),
     )
@@ -123,10 +123,10 @@ async def carts(session, level, menu_name, page, user_id, product_id):
             media=cart.product.image,
             caption=(
                 f"<strong>{cart.product.name}</strong>\n"
-                f"{cart.product.price}$ x {cart.quantity} "
-                f"= {cart_price}$"
+                f"{cart.product.price}₽ x {cart.quantity} "
+                f"= {cart_price}₽"
                 f"\nТовар {paginator.page} из {paginator.pages} в корзине."
-                f"\nОбщая стоимость товаров в корзине {total_price}"
+                f"\nОбщая стоимость товаров в корзине {total_price} ₽"
             ),
         )
 
