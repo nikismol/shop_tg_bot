@@ -5,5 +5,4 @@ db.sqlite3
 .vscode
 __pycache__/
 .DS_Store
-.env
 logs/

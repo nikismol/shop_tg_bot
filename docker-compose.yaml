@@ -1,21 +1,26 @@
-version: '3'
+volumes:
+  postgres_data:
+
 services:
   db:
-    image: postgres:12.4
+    image: postgres:13.10
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    env_file:
-      - ./.env
+      - postgres_data:/var/lib/postgresql/data
 
   bot:
     image: nikismol94/shop_tg_bot
-    depends_on:
-      - db
+    restart: always
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./logs:/bot/logs
     env_file:
-      - .env
-
-volumes:
-  postgres_data:
+      - ./.env
+    depends_on:
+      - db
